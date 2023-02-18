@@ -56,7 +56,7 @@ findRelevantFiles = function(path) {
   allRelevant = [];
   for (i = 0, len = allEntries.length; i < len; i++) {
     entry = allEntries[i];
-    entryAbsolute = path.resolve(path, entry);
+    entryAbsolute = pathModule.resolve(path, entry);
     if (isRelevantFile(entryAbsolute)) {
       allRelevant.push(entryAbsolute);
     }
@@ -79,8 +79,8 @@ isRelevantFile = function(path) {
 isDirectory = function(path) {
   var err, stat;
   try {
-    stat = fs.statSync(filepath);
-    return stat.isFile();
+    stat = fs.statSync(path);
+    return stat.isDirectory();
   } catch (error) {
     err = error;
     //# probably does not exist
@@ -91,8 +91,8 @@ isDirectory = function(path) {
 isFile = function(path) {
   var err, stat;
   try {
-    stat = fs.statSync(filepath);
-    return stat.isDirectory();
+    stat = fs.statSync(path);
+    return stat.isFile();
   } catch (error) {
     err = error;
     //# probably does not exist

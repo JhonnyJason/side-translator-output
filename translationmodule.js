@@ -28,7 +28,7 @@ ait = "await driver."; //# action identifying token
 outputTemplate = `export const testName = '{{{testName}}}';
 
 export async function run (browserUtils, resultUtils) {
-    
+
     const { browser, By, Key } = browserUtils
     const { chai, transitionTime, takeScreenshot } = resultUtils
 
@@ -43,6 +43,7 @@ export async function run (browserUtils, resultUtils) {
     await transitionTime()
     await takeScreenshot({{stepNumber}})
     //step{{stepNumber}} assertions?
+    
     {{/testSteps}}
 
 };`;
